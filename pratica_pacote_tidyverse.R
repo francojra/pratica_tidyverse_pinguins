@@ -15,6 +15,8 @@ View(ping)
 
 # Análises descritivas ---------------------------------------------------------------------------------------------------------------------
 
+# Por sexo ---------------------------------------------------------------------------------------------------------------------------------
+
 ### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
 ### sexo de pinguins no ano de 2009
 
@@ -68,6 +70,8 @@ ping1 %>%
 ### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
 ### espécie de pinguins no ano de 2009
 
+# Por espécie ------------------------------------------------------------------------------------------------------------------------------
+
 ping2 <- ping %>%
   select(comprimento_bico, profundidade_bico, comprimento_nadadeira,
          massa_corporal, especie, ano) %>%
@@ -106,6 +110,54 @@ ping2 %>%
 
 ping2 %>%
   group_by(especie) %>%
+  drop_na() %>%
+  summarise(med_massa_cop = mean(massa_corporal), 
+            sd_massa_cop = sd(massa_corporal),
+            medin_massa_cop = median(massa_corporal))
+
+### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
+### ilha no ano de 2009
+
+# Por ilha ---------------------------------------------------------------------------------------------------------------------------------
+
+ping3 <- ping %>%
+  select(comprimento_bico, profundidade_bico, comprimento_nadadeira,
+         massa_corporal, ilha, ano) %>%
+  filter(ano == "2009") %>%
+  view()
+ping3
+
+# Comprimento do bico
+
+ping3 %>%
+  group_by(ilha) %>%
+  drop_na() %>%
+  summarise(med_comp_bico = mean(comprimento_bico), 
+            sd_comp_bico = sd(comprimento_bico),
+            medin_comp_bico = median(comprimento_bico))
+
+# Profundidade do bico
+
+ping3 %>%
+  group_by(ilha) %>%
+  drop_na() %>%
+  summarise(med_prof_bico = mean(profundidade_bico), 
+            sd_prof_bico = sd(profundidade_bico),
+            medin_prof_bico = median(profundidade_bico))
+
+# Comprimento da nadadeira
+
+ping3 %>%
+  group_by(ilha) %>%
+  drop_na() %>%
+  summarise(med_comp_nad = mean(comprimento_nadadeira), 
+            sd_comp_nad = sd(comprimento_nadadeira),
+            medin_comp_nad = median(comprimento_nadadeira))
+
+# Massa corporal
+
+ping3 %>%
+  group_by(ilha) %>%
   drop_na() %>%
   summarise(med_massa_cop = mean(massa_corporal), 
             sd_massa_cop = sd(massa_corporal),
