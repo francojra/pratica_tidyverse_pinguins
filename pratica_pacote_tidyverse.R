@@ -66,11 +66,10 @@ ping1 %>%
             sd_massa_cop = sd(massa_corporal),
             medin_massa_cop = median(massa_corporal))
 
+# Por espécie ------------------------------------------------------------------------------------------------------------------------------
 
 ### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
 ### espécie de pinguins no ano de 2009
-
-# Por espécie ------------------------------------------------------------------------------------------------------------------------------
 
 ping2 <- ping %>%
   select(comprimento_bico, profundidade_bico, comprimento_nadadeira,
@@ -115,10 +114,10 @@ ping2 %>%
             sd_massa_cop = sd(massa_corporal),
             medin_massa_cop = median(massa_corporal))
 
+# Por ilha ---------------------------------------------------------------------------------------------------------------------------------
+
 ### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
 ### ilha no ano de 2009
-
-# Por ilha ---------------------------------------------------------------------------------------------------------------------------------
 
 ping3 <- ping %>%
   select(comprimento_bico, profundidade_bico, comprimento_nadadeira,
