@@ -28,3 +28,38 @@ ping1 <- ping %>%
   view()
 ping1
 
+# Comprimento do bico
+
+ping1 %>%
+  group_by(sexo) %>%
+  drop_na() %>%
+  summarise(med_comp_bico = mean(comprimento_bico), 
+            sd_comp_bico = sd(comprimento_bico),
+            medin_comp_bico = median(comprimento_bico))
+
+# Profundidade do bico
+
+ping1 %>%
+  group_by(sexo) %>%
+  drop_na() %>%
+  summarise(med_prof_bico = mean(profundidade_bico), 
+            sd_prof_bico = sd(profundidade_bico),
+            medin_prof_bico = median(profundidade_bico))
+
+# Comprimento da nadadeira
+
+ping1 %>%
+  group_by(sexo) %>%
+  drop_na() %>%
+  summarise(med_comp_nad = mean(comprimento_nadadeira), 
+            sd_comp_nad = sd(comprimento_nadadeira),
+            medin_comp_nad = median(comprimento_nadadeira))
+
+# Massa corporal
+
+ping1 %>%
+  group_by(sexo) %>%
+  drop_na() %>%
+  summarise(med_massa_cop = mean(massa_corporal), 
+            sd_massa_cop = sd(massa_corporal),
+            medin_massa_cop = median(massa_corporal))
