@@ -12,3 +12,4 @@
 - Por sexo;
 - Por espécie;
 - Por ilha.
+4. Gráficos.
