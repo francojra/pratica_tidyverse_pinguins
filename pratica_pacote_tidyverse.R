@@ -196,3 +196,16 @@ g2 <- ggplot(pbs) +
   theme_minimal() +
   theme(legend.position = "none")
 g2
+
+g3 <- ggplot(cns) +
+  geom_col(aes(x = sexo, y = med_comp_nad, fill = sexo)) +
+  geom_errorbar(aes(x = sexo, y = med_comp_nad,
+                    ymin = med_comp_nad - sd_comp_nad,
+                    ymax = med_comp_nad + sd_comp_nad),
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
+  scale_x_discrete(labels = c("Fêmea", "Macho")) +
+  labs(X = "Sexo", y = "Comprimento das nadadeiras (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+g3
