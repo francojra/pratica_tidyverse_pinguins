@@ -32,39 +32,43 @@ ping1
 
 # Comprimento do bico
 
-ping1 %>%
+cbs <- ping1 %>%
   group_by(sexo) %>%
   drop_na() %>%
   summarise(med_comp_bico = mean(comprimento_bico), 
             sd_comp_bico = sd(comprimento_bico),
             medin_comp_bico = median(comprimento_bico))
+view(cbs)
 
 # Profundidade do bico
 
-ping1 %>%
+pbs <- ping1 %>%
   group_by(sexo) %>%
   drop_na() %>%
   summarise(med_prof_bico = mean(profundidade_bico), 
             sd_prof_bico = sd(profundidade_bico),
             medin_prof_bico = median(profundidade_bico))
+view(pbs)
 
 # Comprimento da nadadeira
 
-ping1 %>%
+cns <- ping1 %>%
   group_by(sexo) %>%
   drop_na() %>%
   summarise(med_comp_nad = mean(comprimento_nadadeira), 
             sd_comp_nad = sd(comprimento_nadadeira),
             medin_comp_nad = median(comprimento_nadadeira))
+view(cns)
 
 # Massa corporal
 
-ping1 %>%
+mcs <- ping1 %>%
   group_by(sexo) %>%
   drop_na() %>%
   summarise(med_massa_cop = mean(massa_corporal), 
             sd_massa_cop = sd(massa_corporal),
             medin_massa_cop = median(massa_corporal))
+view(mcs)
 
 # Por espécie ------------------------------------------------------------------------------------------------------------------------------
 
@@ -161,3 +165,16 @@ ping3 %>%
   summarise(med_massa_cop = mean(massa_corporal), 
             sd_massa_cop = sd(massa_corporal),
             medin_massa_cop = median(massa_corporal))
+
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
+### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
+### sexo de pinguins no ano de 2009
+
+g1 <- ggplot(cbs) +
+  geom_col(aes(x = sexo, y = med_comp_bico)) +
+  geom_errorbar(aes(x = sexo, y = med_comp_bico,
+                    ymin = med_comp_bico - sd_comp_bico,
+                    ymax = med_comp_bico + sd_comp_bico),
+                    width = 0.2)
+g1
