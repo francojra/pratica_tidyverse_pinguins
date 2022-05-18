@@ -183,3 +183,16 @@ g1 <- ggplot(cbs) +
   theme_minimal() +
   theme(legend.position = "none")
 g1
+
+g2 <- ggplot(pbs) +
+  geom_col(aes(x = sexo, y = med_prof_bico, fill = sexo)) +
+  geom_errorbar(aes(x = sexo, y = med_prof_bico,
+                    ymin = med_prof_bico - sd_prof_bico,
+                    ymax = med_prof_bico + sd_prof_bico),
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
+  scale_x_discrete(labels = c("Fêmea", "Macho")) +
+  labs(X = "Sexo", y = "Profundidade do bico (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+g2
