@@ -172,9 +172,14 @@ ping3 %>%
 ### sexo de pinguins no ano de 2009
 
 g1 <- ggplot(cbs) +
-  geom_col(aes(x = sexo, y = med_comp_bico)) +
+  geom_col(aes(x = sexo, y = med_comp_bico, fill = sexo)) +
   geom_errorbar(aes(x = sexo, y = med_comp_bico,
                     ymin = med_comp_bico - sd_comp_bico,
                     ymax = med_comp_bico + sd_comp_bico),
-                    width = 0.2)
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
+  scale_x_discrete(labels = c("Fêmea", "Macho")) +
+  labs(X = "Sexo", y = "Comprimento do bico (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
 g1
