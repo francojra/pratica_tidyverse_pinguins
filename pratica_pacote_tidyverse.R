@@ -171,7 +171,7 @@ ping3 %>%
 ### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
 ### sexo de pinguins no ano de 2009
 
-g1 <- ggplot(cbs) +
+g1s <- ggplot(cbs) +
   geom_col(aes(x = sexo, y = med_comp_bico, fill = sexo)) +
   geom_errorbar(aes(x = sexo, y = med_comp_bico,
                     ymin = med_comp_bico - sd_comp_bico,
@@ -182,9 +182,9 @@ g1 <- ggplot(cbs) +
   labs(X = "Sexo", y = "Comprimento do bico (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
-g1
+g1s
 
-g2 <- ggplot(pbs) +
+g2s <- ggplot(pbs) +
   geom_col(aes(x = sexo, y = med_prof_bico, fill = sexo)) +
   geom_errorbar(aes(x = sexo, y = med_prof_bico,
                     ymin = med_prof_bico - sd_prof_bico,
@@ -195,9 +195,9 @@ g2 <- ggplot(pbs) +
   labs(X = "Sexo", y = "Profundidade do bico (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
-g2
+g2s
 
-g3 <- ggplot(cns) +
+g3s <- ggplot(cns) +
   geom_col(aes(x = sexo, y = med_comp_nad, fill = sexo)) +
   geom_errorbar(aes(x = sexo, y = med_comp_nad,
                     ymin = med_comp_nad - sd_comp_nad,
@@ -208,4 +208,17 @@ g3 <- ggplot(cns) +
   labs(X = "Sexo", y = "Comprimento das nadadeiras (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
-g3
+g3s
+
+g4s <- ggplot(mcs) +
+  geom_col(aes(x = sexo, y = med_massa_cop, fill = sexo)) +
+  geom_errorbar(aes(x = sexo, y = med_massa_cop,
+                    ymin = med_massa_cop - sd_massa_cop,
+                    ymax = med_massa_cop + sd_massa_cop),
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
+  scale_x_discrete(labels = c("Fêmea", "Macho")) +
+  labs(X = "Sexo", y = "Massa corporal (g)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+g4s
