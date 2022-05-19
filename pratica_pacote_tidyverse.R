@@ -258,33 +258,34 @@ g2e <- ggplot(pbe) +
                     ymax = med_prof_bico + sd_prof_bico),
                     width = 0.2) +
   scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
-  labs(X = "Espécies", y = "Profundidade do bico (mm)") +
+  scale_x_discrete(name = "Espécies") +
+  labs(y = "Profundidade do bico (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g2e
 
-g3e <- ggplot(cns) +
-  geom_col(aes(x = sexo, y = med_comp_nad, fill = sexo)) +
-  geom_errorbar(aes(x = sexo, y = med_comp_nad,
+g3e <- ggplot(cne) +
+  geom_col(aes(x = especie, y = med_comp_nad, fill = especie)) +
+  geom_errorbar(aes(x = especie, y = med_comp_nad,
                     ymin = med_comp_nad - sd_comp_nad,
                     ymax = med_comp_nad + sd_comp_nad),
                     width = 0.2) +
-  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
-  scale_x_discrete(labels = c("Fêmea", "Macho")) +
-  labs(X = "Sexo", y = "Comprimento das nadadeiras (mm)") +
+  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
+  scale_x_discrete(name = "Espécies") +
+  labs(y = "Comprimento das nadadeiras (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g3e
 
-g4e <- ggplot(mcs) +
-  geom_col(aes(x = sexo, y = med_massa_cop, fill = sexo)) +
-  geom_errorbar(aes(x = sexo, y = med_massa_cop,
+g4e <- ggplot(mce) +
+  geom_col(aes(x = especie, y = med_massa_cop, fill = especie)) +
+  geom_errorbar(aes(x = especie, y = med_massa_cop,
                     ymin = med_massa_cop - sd_massa_cop,
                     ymax = med_massa_cop + sd_massa_cop),
                     width = 0.2) +
-  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
-  scale_x_discrete(labels = c("Fêmea", "Macho")) +
-  labs(X = "Sexo", y = "Massa corporal (g)") +
+  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
+  scale_x_discrete(name = "Espécies") +
+  labs(y = "Massa corporal (g)") +
   theme_minimal() +
   theme(legend.position = "none")
 g4e
