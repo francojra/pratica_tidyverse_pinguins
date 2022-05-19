@@ -84,39 +84,47 @@ ping2
 
 # Comprimento do bico
 
-ping2 %>%
+cbe <- ping2 %>%
   group_by(especie) %>%
   drop_na() %>%
   summarise(med_comp_bico = mean(comprimento_bico), 
             sd_comp_bico = sd(comprimento_bico),
             medin_comp_bico = median(comprimento_bico))
 
+view(cbe)
+
 # Profundidade do bico
 
-ping2 %>%
+pbe <- ping2 %>%
   group_by(especie) %>%
   drop_na() %>%
   summarise(med_prof_bico = mean(profundidade_bico), 
             sd_prof_bico = sd(profundidade_bico),
             medin_prof_bico = median(profundidade_bico))
 
+view(pbe)
+
 # Comprimento da nadadeira
 
-ping2 %>%
+cne <- ping2 %>%
   group_by(especie) %>%
   drop_na() %>%
   summarise(med_comp_nad = mean(comprimento_nadadeira), 
             sd_comp_nad = sd(comprimento_nadadeira),
             medin_comp_nad = median(comprimento_nadadeira))
 
+view(cne)
+
 # Massa corporal
 
-ping2 %>%
+mce <- ping2 %>%
   group_by(especie) %>%
   drop_na() %>%
   summarise(med_massa_cop = mean(massa_corporal), 
             sd_massa_cop = sd(massa_corporal),
             medin_massa_cop = median(massa_corporal))
+
+view(mce)
 
 # Por ilha ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -178,8 +186,9 @@ g1s <- ggplot(cbs) +
                     ymax = med_comp_bico + sd_comp_bico),
                     width = 0.2) +
   scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
-  scale_x_discrete(labels = c("Fêmea", "Macho")) +
-  labs(X = "Sexo", y = "Comprimento do bico (mm)") +
+  scale_x_discrete(labels = c("Fêmea", "Macho"),
+                   name = "Sexo") +
+  labs(y = "Comprimento do bico (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g1s
@@ -191,8 +200,9 @@ g2s <- ggplot(pbs) +
                     ymax = med_prof_bico + sd_prof_bico),
                     width = 0.2) +
   scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
-  scale_x_discrete(labels = c("Fêmea", "Macho")) +
-  labs(X = "Sexo", y = "Profundidade do bico (mm)") +
+  scale_x_discrete(labels = c("Fêmea", "Macho"),
+                   name = "Sexo") +
+  labs(y = "Profundidade do bico (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g2s
@@ -204,8 +214,9 @@ g3s <- ggplot(cns) +
                     ymax = med_comp_nad + sd_comp_nad),
                     width = 0.2) +
   scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
-  scale_x_discrete(labels = c("Fêmea", "Macho")) +
-  labs(X = "Sexo", y = "Comprimento das nadadeiras (mm)") +
+  scale_x_discrete(labels = c("Fêmea", "Macho"),
+                   name = "Sexo") +
+  labs(y = "Comprimento das nadadeiras (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g3s
@@ -217,8 +228,63 @@ g4s <- ggplot(mcs) +
                     ymax = med_massa_cop + sd_massa_cop),
                     width = 0.2) +
   scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
+  scale_x_discrete(labels = c("Fêmea", "Macho"),
+                   name = "Sexo") +
+  labs(y = "Massa corporal (g)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+g4s
+
+### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
+### espécie de pinguins no ano de 2009
+
+g1e <- ggplot(cbe) +
+  geom_col(aes(x = especie, y = med_comp_bico, fill = especie)) +
+  geom_errorbar(aes(x = especie, y = med_comp_bico,
+                    ymin = med_comp_bico - sd_comp_bico,
+                    ymax = med_comp_bico + sd_comp_bico),
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
+  scale_x_discrete(name = "Espécies") +
+  labs(y = "Comprimento do bico (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+g1e
+
+g2e <- ggplot(pbe) +
+  geom_col(aes(x = especie, y = med_prof_bico, fill = especie)) +
+  geom_errorbar(aes(x = especie, y = med_prof_bico,
+                    ymin = med_prof_bico - sd_prof_bico,
+                    ymax = med_prof_bico + sd_prof_bico),
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
+  labs(X = "Espécies", y = "Profundidade do bico (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+g2e
+
+g3e <- ggplot(cns) +
+  geom_col(aes(x = sexo, y = med_comp_nad, fill = sexo)) +
+  geom_errorbar(aes(x = sexo, y = med_comp_nad,
+                    ymin = med_comp_nad - sd_comp_nad,
+                    ymax = med_comp_nad + sd_comp_nad),
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
+  scale_x_discrete(labels = c("Fêmea", "Macho")) +
+  labs(X = "Sexo", y = "Comprimento das nadadeiras (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+g3e
+
+g4e <- ggplot(mcs) +
+  geom_col(aes(x = sexo, y = med_massa_cop, fill = sexo)) +
+  geom_errorbar(aes(x = sexo, y = med_massa_cop,
+                    ymin = med_massa_cop - sd_massa_cop,
+                    ymax = med_massa_cop + sd_massa_cop),
+                    width = 0.2) +
+  scale_fill_manual(values = c("#d8b365", "#5ab4ac")) +
   scale_x_discrete(labels = c("Fêmea", "Macho")) +
   labs(X = "Sexo", y = "Massa corporal (g)") +
   theme_minimal() +
   theme(legend.position = "none")
-g4s
+g4e
