@@ -301,53 +301,53 @@ g4e
 ### Medidas de comprimento da nadadeira, massa corporal e dimensões do bico por
 ### ilha no ano de 2009
 
-g1i <- ggplot(cbe) +
-  geom_col(aes(x = especie, y = med_comp_bico, fill = especie)) +
-  geom_errorbar(aes(x = especie, y = med_comp_bico,
+g1i <- ggplot(cbi) +
+  geom_col(aes(x = ilha, y = med_comp_bico, fill = ilha)) +
+  geom_errorbar(aes(x = ilha, y = med_comp_bico,
                     ymin = med_comp_bico - sd_comp_bico,
                     ymax = med_comp_bico + sd_comp_bico),
                     width = 0.2) +
-  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
-  scale_x_discrete(name = "Espécies") +
+  scale_fill_manual(values = c("#bc80bd", "#fdb462", "#8dd3c7")) +
+  scale_x_discrete(name = "Ilhas") +
   labs(y = "Comprimento do bico (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g1i
 
-g2i <- ggplot(pbe) +
-  geom_col(aes(x = especie, y = med_prof_bico, fill = especie)) +
-  geom_errorbar(aes(x = especie, y = med_prof_bico,
+g2i <- ggplot(pbi) +
+  geom_col(aes(x = ilha, y = med_prof_bico, fill = ilha)) +
+  geom_errorbar(aes(x = ilha, y = med_prof_bico,
                     ymin = med_prof_bico - sd_prof_bico,
                     ymax = med_prof_bico + sd_prof_bico),
                     width = 0.2) +
-  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
-  scale_x_discrete(name = "Espécies") +
+  scale_fill_manual(values = c("#bc80bd", "#fdb462", "#8dd3c7")) +
+  scale_x_discrete(name = "Ilhas") +
   labs(y = "Profundidade do bico (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g2i
 
-g3i <- ggplot(cne) +
-  geom_col(aes(x = especie, y = med_comp_nad, fill = especie)) +
-  geom_errorbar(aes(x = especie, y = med_comp_nad,
+g3i <- ggplot(cni) +
+  geom_col(aes(x = ilha, y = med_comp_nad, fill = ilha)) +
+  geom_errorbar(aes(x = ilha, y = med_comp_nad,
                     ymin = med_comp_nad - sd_comp_nad,
                     ymax = med_comp_nad + sd_comp_nad),
                     width = 0.2) +
-  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
-  scale_x_discrete(name = "Espécies") +
+  scale_fill_manual(values = c("#bc80bd", "#fdb462", "#8dd3c7")) +
+  scale_x_discrete(name = "Ilhas") +
   labs(y = "Comprimento das nadadeiras (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 g3i
 
-g4i <- ggplot(mce) +
-  geom_col(aes(x = especie, y = med_massa_cop, fill = especie)) +
-  geom_errorbar(aes(x = especie, y = med_massa_cop,
+g4i <- ggplot(mci) +
+  geom_col(aes(x = ilha, y = med_massa_cop, fill = ilha)) +
+  geom_errorbar(aes(x = ilha, y = med_massa_cop,
                     ymin = med_massa_cop - sd_massa_cop,
                     ymax = med_massa_cop + sd_massa_cop),
                     width = 0.2) +
-  scale_fill_manual(values = c("#d53e4f", "#99d594", "#fee08b")) +
-  scale_x_discrete(name = "Espécies") +
+  scale_fill_manual(values = c("#bc80bd", "#fdb462", "#8dd3c7")) +
+  scale_x_discrete(name = "Ilhas") +
   labs(y = "Massa corporal (g)") +
   theme_minimal() +
   theme(legend.position = "none")
